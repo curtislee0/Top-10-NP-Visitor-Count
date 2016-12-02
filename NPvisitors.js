@@ -109,7 +109,7 @@ d3.csv("visitors.csv", function(error, data) {
         .translate([width/4, height * 5 / 10]);
     
     var path = d3.geo.path()
-        .projection(projection);    
+        .projection(projection);
     
     d3.json("parks.json", function(error, park) {
         if (error) throw error;
