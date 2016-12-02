@@ -1,0 +1,68 @@
+body{
+    font: 12px sans-serif;
+}
+
+#logistics {
+    background-color: lightgrey;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 275px 0;
+}
+
+th {
+    padding: 4px 0;
+}
+
+.div .info {
+    height: 300px;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+	stroke: black;
+    shape-rendering: crispEdges;
+}
+
+.x.axis path {
+    display: none;
+}
+
+.axis text {
+    font: Times;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.line {
+    fill: none;
+    stroke: steelblue;
+    stroke-width: 1.5px;
+}
+
+.grid .tick {
+    stroke: lightgrey;
+    opacity: 0.3;
+    shape-rendering: crispEdges;
+}
+.grid path {
+      stroke-width: 0;
+}
+
+.legend {
+    font-size: 20px;
+}
+
+.statebound {
+    fill: none;
+    stroke: #000;
+    stroke-width: 0.4px;
+}
+
+.parkbound {
+    fill: blue;
+    stroke: #000;
+    stroke-width: 0.25px;
+}
