@@ -96,7 +96,7 @@ d3.csv("visitors.csv", function(error, data) {
                 parkinfo.transition()
                     .duration(300)
                     .style("opacity",1);
-                parkinfo.html("<strong>" + d.values.park + "</strong><br/>" + "lots of infomation");
+                parkinfo.html("<strong>" + d.values[0].park + "</strong><br/>" + "lots of infomation");
                 })
             .text(d.key); 
 
@@ -131,7 +131,8 @@ d3.csv("visitors.csv", function(error, data) {
     
         neededparks.geometries = p;
         
-        console.log(park);   
+        console.log(park);
+        console.log(neededparks);
         
         svg.append("path")
             .attr("class", "statebound")
@@ -143,6 +144,11 @@ d3.csv("visitors.csv", function(error, data) {
             .datum(topojson.feature(park, neededparks))
             .attr("d", path);
         
+        svg.selectAll(".parkbound")
+            .style("fill", function(d) {
+                console.log(d);
+                return color(d.features.properties.UNIT_CODE);
+            });
     });
     
     // Add the X Axis
