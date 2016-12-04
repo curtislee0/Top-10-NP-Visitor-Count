@@ -42,11 +42,13 @@ var parkinfo = d3.select("body").append("div")   //append div to body
 
 // Get the data
 d3.csv("visitors.csv", function(error, data) {
+    
     data.forEach(function(d) {
 		d.date = parseDate(d.date);
 		d.visitors = +d.visitors;
+        d.park = d.park;
     });
-
+    
     // Scale the range of the data
     x.domain(d3.extent(data, function(d) { return d.date; }));
     y.domain([0, d3.max(data, function(d) { return d.visitors; })]);
@@ -102,7 +104,6 @@ d3.csv("visitors.csv", function(error, data) {
 
     });
     
-    
     // start projection
     var projection = d3.geo.albersUsa()
         .scale(1000)
@@ -110,6 +111,10 @@ d3.csv("visitors.csv", function(error, data) {
     
     var path = d3.geo.path()
         .projection(projection);
+    
+    var parktip = d3.select("body").append("div")	
+        .attr("class", "tooltip")				
+        .style("opacity", 0);
     
     d3.json("parks.json", function(error, park) {
         if (error) throw error;
@@ -131,9 +136,6 @@ d3.csv("visitors.csv", function(error, data) {
     
         neededparks.geometries = p;
         
-        console.log(park);
-        console.log(neededparks);
-        
         svg.append("path")
             .attr("class", "statebound")
             .datum(topojson.feature(park, park.objects.states))
@@ -145,9 +147,23 @@ d3.csv("visitors.csv", function(error, data) {
             .attr("d", path);
         
         svg.selectAll(".parkbound")
-            .style("fill", function(d) {
+//            .style("fill", function(d) {
+//                console.log(d);
+//                return color(d.features.properties.UNIT_CODE);
+//            })
+            .on("mouseover", function(d) {
                 console.log(d);
-                return color(d.features.properties.UNIT_CODE);
+                parktip.transition()		
+                    .duration(200)		
+                    .style("opacity", .9);		
+                parktip.html(d.features[0].properties.UNIT_NAME)	
+                    .style("left", (d3.event.pageX) + "px")		
+                    .style("top", (d3.event.pageY - 28) + "px");	
+                })
+            .on("mouseout", function(d) {		
+                parktip.transition()		
+                    .duration(500)		
+                    .style("opacity", 0);	
             });
     });
     
