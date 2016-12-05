@@ -97,10 +97,10 @@ d3.csv("visitors.csv", function(error, data) {
                     .duration(300)
                     .style("opacity",1);
                 parkinfo.html("<strong>" + d.values[0].park + "</strong><br/>" + "lots of infomation");
-                showtip(d);
+                
                 })
             .on("mouseout", function(){
-                hidetip(d);
+                
                 })
             .text(d.values[0].park); 
 
@@ -159,7 +159,7 @@ d3.csv("visitors.csv", function(error, data) {
                     .style("opacity", .9);		
                 parktip.html(d.properties.UNIT_NAME)
                     .style("left", (d3.event.pageX) + "px")		
-                    .style("top", (d3.event.pageY - 28) + "px")
+                    .style("top", (d3.event.pageY - 23) + "px")
                     .style("background", function() {
                         console.log(d);
                         return color(d.properties.UNIT_CODE);
