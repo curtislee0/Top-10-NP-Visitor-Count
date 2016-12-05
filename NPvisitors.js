@@ -139,13 +139,13 @@ d3.csv("visitors.csv", function(error, data) {
             .datum(topojson.feature(park, park.objects.states))
             .attr("d", path);
         
-        svg.append("path")
+        svg.append("g")
             .attr("class", "parkbound")
-            .datum(topojson.feature(park, neededparks))
-            .attr("d", path);
-        
-        svg.selectAll(".parkbound") 
+            .selectAll("path")
             .data(topojson.feature(park, neededparks).features)
+            .enter()
+            .append("path")
+            .attr("d", path)
             .on("mouseover", function(d) {
                 console.log(d);
                 parktip.transition()		
@@ -155,11 +155,12 @@ d3.csv("visitors.csv", function(error, data) {
                     .style("left", (d3.event.pageX) + "px")		
                     .style("top", (d3.event.pageY - 28) + "px")
             })
-            .on("mouseout", function(d) {		
+            .on("mouseout", function() {		
                 parktip.transition()		
                     .duration(500)		
                     .style("opacity", 0);	
             }); 
+//            color code
 //            .style("fill", function(d) {
 //                console.log(d);
 //                return color(d.features.properties.UNIT_CODE);
