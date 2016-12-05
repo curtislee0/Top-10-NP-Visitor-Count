@@ -97,8 +97,9 @@ d3.csv("visitors.csv", function(error, data) {
                     .duration(300)
                     .style("opacity",1);
                 parkinfo.html("<strong>" + d.values[0].park + "</strong><br/>" + "lots of infomation");
+                showtip(d.values[0].park);
                 })
-            .text(d.key); 
+            .text(d.values[0].park); 
 
     });
     
@@ -147,7 +148,9 @@ d3.csv("visitors.csv", function(error, data) {
             .append("path")
             .attr("d", path)
             .on("mouseover", function(d) {
-                console.log(d);
+                
+                var matrix = this.getScreen
+                
                 parktip.transition()		
                     .duration(200)		
                     .style("opacity", .9);		
@@ -163,8 +166,22 @@ d3.csv("visitors.csv", function(error, data) {
             .style("fill", function(d) {
                 console.log(d);
                 return color(d.properties.UNIT_CODE);
-            })
-    });
+            });
+        
+        });
+        
+    
+    function showtip(unit){
+        svg.selectAll(".parkbound")
+            .call(function(d) {
+                parktip.transition()		
+                    .duration(200)		
+                    .style("opacity", .9);		
+                parktip.html(unit)
+                    .style("left", (d3.event.pageX) + "px")		
+                    .style("top", (d3.event.pageY - 28) + "px")
+            });
+    };
     
     // Add the X Axis
     svg.append("g")
@@ -177,5 +194,5 @@ d3.csv("visitors.csv", function(error, data) {
         .attr("class", "y axis")
         .attr("transform", "translate(995,0)")
         .call(yAxis);
-
+    
 });
