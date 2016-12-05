@@ -159,12 +159,12 @@ d3.csv("visitors.csv", function(error, data) {
                 parktip.transition()		
                     .duration(500)		
                     .style("opacity", 0);	
-            }); 
+            })//; 
 //            color code
-//            .style("fill", function(d) {
-//                console.log(d);
-//                return color(d.features.properties.UNIT_CODE);
-//            })
+            .style("fill", function(d) {
+                console.log(d);
+                return color(d.properties.UNIT_CODE);
+            })
     });
     
     // Add the X Axis
