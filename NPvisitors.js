@@ -99,6 +99,9 @@ d3.csv("visitors.csv", function(error, data) {
                 parkinfo.html("<strong>" + d.values[0].park + "</strong><br/>" + "lots of infomation");
                 showtip(d);
                 })
+            .on("mouseout", function(){
+                hidetip(d);
+                })
             .text(d.values[0].park); 
 
     });
@@ -188,6 +191,12 @@ d3.csv("visitors.csv", function(error, data) {
                         return color(d.key);
                     })
             });
+    };
+    
+    function hidetip(d){
+        parktip.transition()		
+                .duration(500)		
+                .style("opacity", 0);
     };
     
     // Add the X Axis
