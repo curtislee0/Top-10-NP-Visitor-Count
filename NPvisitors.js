@@ -40,8 +40,12 @@ var parkinfo = d3.select("body").append("div")   //append div to body
     .attr("class", "info")
     .style("opacity", 0);
 
-// Get the data
-d3.csv("visitors.csv", function(error, data) {
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//  Data Read Start
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+d3.json("parks.json", function(error, park) {
+        if (error) throw error;
+    d3.csv("visitors.csv", function(error, data) {
     
     data.forEach(function(d) {
 		d.date = parseDate(d.date);
@@ -73,7 +77,7 @@ d3.csv("visitors.csv", function(error, data) {
             .attr("id", 'tag'+d.key.replace(/\s+/g, '')) // assign ID
             .attr("d", priceline(d.values))
             .style("opacity", 0);
-
+        
         // Add the Legend
         svg.append("text")
             .attr("x", (legendSpace/2)+i*legendSpace)  // space legend
@@ -115,7 +119,21 @@ d3.csv("visitors.csv", function(error, data) {
 
     });
     
-    // start projection
+    // Add the X Axis
+    svg.append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + height + ")")
+        .call(xAxis);
+
+    // Add the Y Axis
+    svg.append("g")
+        .attr("class", "y axis")
+        .attr("transform", "translate(995,0)")
+    .call(yAxis);    
+        
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//  Map Projection Start
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     var projection = d3.geo.albersUsa()
         .scale(1000)
         .translate([width/4, height * 5 / 10]);
@@ -126,10 +144,7 @@ d3.csv("visitors.csv", function(error, data) {
     var parktip = d3.select("body").append("div")	
         .attr("class", "tooltip")				
         .style("opacity", 0);
-    
-    d3.json("parks.json", function(error, park) {
-        if (error) throw error;
-        
+            
         var neededparks = park.objects.npsboundary;
         var ourparks = park.objects.npsboundary.geometries;
         var p = ourparks.filter(function(d) {
@@ -186,19 +201,9 @@ d3.csv("visitors.csv", function(error, data) {
         
         });
         
-        // Add the X Axis
-        svg.append("g")
-            .attr("class", "x axis")
-            .attr("transform", "translate(0," + height + ")")
-            .call(xAxis);
-
-        // Add the Y Axis
-        svg.append("g")
-            .attr("class", "y axis")
-            .attr("transform", "translate(995,0)")
-            .call(yAxis);
+        
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    //Helper Functions
+//  Helper Functions
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     
     function showtip(d){
