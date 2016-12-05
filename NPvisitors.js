@@ -93,7 +93,6 @@ d3.csv("visitors.csv", function(error, data) {
                 d.active = active;
                 })
             .on("mouseover", function(){
-<<<<<<< HEAD
                 information(d);
                 showtip(d);
                 })
@@ -102,7 +101,6 @@ d3.csv("visitors.csv", function(error, data) {
                     .duration(500)
                     .style("opacity",0);*/
                 hidetip(d);
-=======
                 parkinfo.transition()
                     .duration(300)
                     .style("opacity",1);
@@ -111,7 +109,6 @@ d3.csv("visitors.csv", function(error, data) {
                 })
             .on("mouseout", function(){
                 
->>>>>>> origin/master
                 })
             .text(d.values[0].park); 
 
