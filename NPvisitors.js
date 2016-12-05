@@ -66,8 +66,6 @@ d3.csv("visitors.csv", function(error, data) {
     // Loop through each symbol / key
     dataNest.forEach(function(d,i) { 
         
-        console.log(d);
-        
         svg.append("path")
             .attr("class", "line")
             .style("stroke", function() { // Add the colours dynamically
@@ -146,25 +144,26 @@ d3.csv("visitors.csv", function(error, data) {
             .datum(topojson.feature(park, neededparks))
             .attr("d", path);
         
-        svg.selectAll(".parkbound")
-//            .style("fill", function(d) {
-//                console.log(d);
-//                return color(d.features.properties.UNIT_CODE);
-//            })
+        svg.selectAll(".parkbound") 
+            .data(topojson.feature(park, neededparks).features)
             .on("mouseover", function(d) {
                 console.log(d);
                 parktip.transition()		
                     .duration(200)		
                     .style("opacity", .9);		
-                parktip.html(d.features[0].properties.UNIT_NAME)	
+                parktip.html(d.properties.UNIT_NAME)
                     .style("left", (d3.event.pageX) + "px")		
-                    .style("top", (d3.event.pageY - 28) + "px");	
-                })
+                    .style("top", (d3.event.pageY - 28) + "px")
+            })
             .on("mouseout", function(d) {		
                 parktip.transition()		
                     .duration(500)		
                     .style("opacity", 0);	
-            });
+            }); 
+//            .style("fill", function(d) {
+//                console.log(d);
+//                return color(d.features.properties.UNIT_CODE);
+//            })
     });
     
     // Add the X Axis
