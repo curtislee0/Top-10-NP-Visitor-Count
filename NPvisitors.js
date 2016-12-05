@@ -82,7 +82,8 @@ d3.csv("visitors.csv", function(error, data) {
             .style("fill", function() { // Add the colours dynamically
                 return d.color = color(d.key); })
             .on("click", function(){
-                // Determine if current line is visible 
+                // Determine if current line is visible
+                console.log(d)
                 var active   = d.active ? false : true,
                 newOpacity = active ? 1 : 0; 
                 // Hide or show the elements based on the ID
@@ -185,6 +186,20 @@ d3.csv("visitors.csv", function(error, data) {
         
         });
         
+        // Add the X Axis
+        svg.append("g")
+            .attr("class", "x axis")
+            .attr("transform", "translate(0," + height + ")")
+            .call(xAxis);
+
+        // Add the Y Axis
+        svg.append("g")
+            .attr("class", "y axis")
+            .attr("transform", "translate(995,0)")
+            .call(yAxis);
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    //Helper Functions
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     
     function showtip(d){
         svg.selectAll(".parkbound")
@@ -206,18 +221,6 @@ d3.csv("visitors.csv", function(error, data) {
                 .duration(500)		
                 .style("opacity", 0);
     };
-    
-    // Add the X Axis
-    svg.append("g")
-        .attr("class", "x axis")
-        .attr("transform", "translate(0," + height + ")")
-        .call(xAxis);
-
-    // Add the Y Axis
-    svg.append("g")
-        .attr("class", "y axis")
-        .attr("transform", "translate(995,0)")
-        .call(yAxis);
     
     function information(d){
         switch(d.key){
