@@ -93,13 +93,13 @@ d3.csv("visitors.csv", function(error, data) {
                 d.active = active;
                 })
             .on("mouseover", function(){
-                parkinfo.transition()
-                    .duration(300)
-                    .style("opacity",1);
-                parkinfo.html("<strong>" + d.values[0].park + "</strong><br/>" + "lots of infomation");
+                information(d);
                 showtip(d);
                 })
             .on("mouseout", function(){
+                /*parkinfo.transition()
+                    .duration(500)
+                    .style("opacity",0);*/
                 hidetip(d);
                 })
             .text(d.values[0].park); 
@@ -168,7 +168,7 @@ d3.csv("visitors.csv", function(error, data) {
             .on("mouseout", function() {		
                 parktip.transition()		
                     .duration(500)		
-                    .style("opacity", 0);	
+                    .style("opacity", 0);
             })
             .style("fill", function(d) {
                 console.log(d);
@@ -210,5 +210,19 @@ d3.csv("visitors.csv", function(error, data) {
         .attr("class", "y axis")
         .attr("transform", "translate(995,0)")
         .call(yAxis);
+    
+    function information(d){
+        if(d.key=="ACAD"){
+            parkinfo.transition()
+                    .duration(300)
+                    .style("opacity",1);
+                parkinfo.html(
+                    "<h2 style='text-align:center'><strong>" + 
+                    d.values[0].park + 
+                    "</strong></h2><br/>" + 
+                    "Credit: NPS / Kristi Rugg" + 
+                    "<img src='https://www.nps.gov/common/uploads/photogallery/ner/park/acad/5ABAAE29-1DD8-B71B-0B65C077C4876E7F/5ABAAE29-1DD8-B71B-0B65C077C4876E7F-large.jpg' alt='Rocky Ocean Drive Coast' style='float:right;max-width:100%;max-height:100%;border:0;'>");
+        }
+    };
     
 });

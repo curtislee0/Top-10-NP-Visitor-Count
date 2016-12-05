@@ -15,8 +15,9 @@ th {
     padding: 4px 0;
 }
 
-.div .info {
-    height: 300px;
+.info {
+    //width:1920px;
+    //height: 200px;
 }
 
 .axis path,
@@ -53,7 +54,6 @@ th {
 
 .legend {
     font-size: 15px;
-    text-align: left;
 }
 
 .statebound {
