@@ -237,7 +237,7 @@ d3.json("parks.json", function(error, park) {
                     "<h2 style='text-align:center'><strong>" + 
                     d.values[0].park + 
                     "</strong></h2><br/>" + 
-                    "Credit: NPS / Kristi Rugg" + 
+                    "<div style='position:absolute;bottom:-230px;right:50px;'><i>Credit: NPS / Kristi Rugg</i></div>" + 
                     "<img src='https://www.nps.gov/common/uploads/photogallery/ner/park/acad/5ABAAE29-1DD8-B71B-0B65C077C4876E7F/5ABAAE29-1DD8-B71B-0B65C077C4876E7F-large.jpg' alt='Rocky Ocean Drive Coast' style='float:right;max-width:88%;max-height:88%;border:0;'>");
                 break;
             case "GLAC":
