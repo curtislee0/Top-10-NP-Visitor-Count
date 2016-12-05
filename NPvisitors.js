@@ -239,7 +239,7 @@ d3.json("parks.json", function(error, park) {
                     "<h2 style='text-align:center'><strong>" + 
                     d.values[0].park + 
                     "</strong></h2><br/>" + 
-                    "<div style='position:absolute;bottom:-230px;right:50px;'><i>Credit: NPS / Kristi Rugg</i></div>" + 
+                    "<div style='position:relative;' align='right'><i>Credit: NPS / Kristi Rugg</i></div>" + 
                     "<img src='https://www.nps.gov/common/uploads/photogallery/ner/park/acad/5ABAAE29-1DD8-B71B-0B65C077C4876E7F/5ABAAE29-1DD8-B71B-0B65C077C4876E7F-large.jpg' alt='Rocky Ocean Drive Coast' style='float:right;max-width:88%;max-height:88%;border:0;'>");
                 break;
             case "GLAC":
@@ -250,7 +250,7 @@ d3.json("parks.json", function(error, park) {
                     "<h2 style='text-align:center'><strong>" + 
                     d.values[0].park + 
                     "</strong></h2><br/>" + 
-                    "<div style='position:absolute;bottom:-230px;right:50px;'><i>Credit: NPS</i></div>" + 
+                    "<div style='position:relative;' align='right'><i>Credit: NPS</i></div>" + 
                     "<img src='https://www.nps.gov/common/uploads/photogallery/imr/park/glac/F27CED7C-155D-451F-67A8213F347FBE5E/F27CED7C-155D-451F-67A8213F347FBE5E-large.jpg' alt='Glenns Lake' style='float:right;max-width:88%;max-height:88%;border:0;'>");
                 break;
             case "GRCA":
@@ -261,7 +261,7 @@ d3.json("parks.json", function(error, park) {
                     "<h2 style='text-align:center'><strong>" + 
                     d.values[0].park + 
                     "</strong></h2><br/>" + 
-                    "<div style='position:absolute;bottom:-230px;right:50px;'><i>Credit: NPS</i></div>" + 
+                    "<div style='position:relative;' align='right'><i>Credit: NPS</i></div>" + 
                     "<img src='https://www.nps.gov/common/uploads/photogallery/imr/park/grca/F7A4FC28-155D-451F-6754A8A6935BE816/F7A4FC28-155D-451F-6754A8A6935BE816-large.jpg' alt='Mather Point Rainbow' style='float:right;max-width:88%;max-height:88%;border:0;'>");
                 break;
             case "GRTE":
@@ -272,7 +272,7 @@ d3.json("parks.json", function(error, park) {
                     "<h2 style='text-align:center'><strong>" + 
                     d.values[0].park + 
                     "</strong></h2><br/>" + 
-                    "<div style='position:absolute;bottom:-230px;right:50px;'><i>Credit: NPS</i></div>" + 
+                    "<div style='position:relative;' align='right'><i>Credit: NPS</i></div>" + 
                     "<img src='https://www.nps.gov/common/uploads/photogallery/imr/park/grte/FC195559-155D-451F-67A79FAE8DF723B0/FC195559-155D-451F-67A79FAE8DF723B0-large.JPG' alt='String Lake' style='float:right;max-width:88%;max-height:88%;border:0;'>");
                 break;
             case "GRSM":
@@ -283,7 +283,7 @@ d3.json("parks.json", function(error, park) {
                     "<h2 style='text-align:center'><strong>" + 
                     d.values[0].park + 
                     "</strong></h2><br/>" + 
-                    "<div style='position:absolute;bottom:-230px;right:50px;'><i>Credit: NPS</i></div>" + 
+                    "<div style='position:relative;' align='right'><i>Credit: NPS</i></div>" + 
                     "<img src='https://www.nps.gov/common/uploads/photogallery/akr/park/grsm/2884C85B-1DD8-B71C-07641C4C43F3FDA7/2884C85B-1DD8-B71C-07641C4C43F3FDA7-large.jpg' alt='Cataloochee Creek' style='float:right;max-width:88%;max-height:88%;border:0;'>");
                 break;
             case "OLYM":
@@ -294,7 +294,7 @@ d3.json("parks.json", function(error, park) {
                     "<h2 style='text-align:center'><strong>" + 
                     d.values[0].park + 
                     "</strong></h2><br/>" + 
-                    "<div style='position:absolute;bottom:-230px;right:50px;'><i>Credit: NPS photo</i></div>" + 
+                    "<div style='position:relative;' align='right'><i>Credit: NPS photo</i></div>" + 
                     "<img src='https://www.nps.gov/common/uploads/photogallery/20151215/park/olym/86070B68-1DD8-B71B-0B10F1FCC85DF7F8/86070B68-1DD8-B71B-0B10F1FCC85DF7F8-large.jpg' alt='Mountain Wildflowers' style='float:right;max-width:88%;max-height:88%;border:0;'>");
                 break;
             case "ROMO":
@@ -305,7 +305,7 @@ d3.json("parks.json", function(error, park) {
                     "<h2 style='text-align:center'><strong>" + 
                     d.values[0].park + 
                     "</strong></h2><br/>" + 
-                    "<div style='position:absolute;bottom:-230px;right:50px;'><i>Credit: NPS</i></div>" + 
+                    "<div style='position:relative;' align='right'><i>Credit: NPS</i></div>" + 
                     "<img src='https://www.nps.gov/common/uploads/photogallery/20140131/park/romo/271155A1-155D-451F-67485D6D107B39BF/271155A1-155D-451F-67485D6D107B39BF-large.jpg' alt='Lily Lake' style='float:right;max-width:88%;max-height:88%;border:0;'>");
                 break;
             case "YELL":
@@ -316,7 +316,7 @@ d3.json("parks.json", function(error, park) {
                     "<h2 style='text-align:center'><strong>" + 
                     d.values[0].park + 
                     "</strong></h2><br/>" + 
-                    "<div style='position:absolute;bottom:-230px;right:50px;'><i>Credit: NPS/Curtis Akin</i></div>" + 
+                    "<div style='position:relative;' align='right'><i>Credit: NPS/Curtis Akin</i></div>" + 
                     "<img src='https://www.nps.gov/common/uploads/photogallery/20160215/park/yell/01680965-1DD8-B71B-0BAC451A696CFC83/01680965-1DD8-B71B-0BAC451A696CFC83-large.jpg' alt='Grand Prismatic Spring' style='float:right;max-width:88%;max-height:88%;border:0;'>");
                 break;
             case "YOSE":
@@ -327,7 +327,7 @@ d3.json("parks.json", function(error, park) {
                     "<h2 style='text-align:center'><strong>" + 
                     d.values[0].park + 
                     "</strong></h2><br/>" + 
-                    "<div style='position:absolute;bottom:-230px;right:50px;'><i>Credit: <a href='http://www.pachd.com/'>www.pachd.com</a></i></div>" + 
+                    "<div style='position:relative;' align='right'><i>Credit: <a href='http://www.pachd.com/'>www.pachd.com</a></i></div>" + 
                     "<img src='http://www.pachd.com/free-images/yosemite/yosemite-03.jpg' alt='Half Dome' style='float:right;max-width:88%;max-height:88%;border:0;'>");
                 break;
             case "ZION":
@@ -338,7 +338,7 @@ d3.json("parks.json", function(error, park) {
                     "<h2 style='text-align:center'><strong>" + 
                     d.values[0].park + 
                     "</strong></h2><br/>" + 
-                    "<div style='position:absolute;bottom:-230px;right:50px;'><i>Credit: NPS Photo</i></div>" + 
+                    "<div style='position:relative;' align='right'><i>Credit: NPS Photo</i></div>" + 
                     "<img src='https://www.nps.gov/common/uploads/photogallery/imr/park/zion/9CAAA9F0-1DD8-B71B-0B40CA1A8612FFB9/9CAAA9F0-1DD8-B71B-0B40CA1A8612FFB9-large.jpg' alt='South Entrance' style='float:right;max-width:88%;max-height:88%;border:0;'>");
                 break;
             default:
