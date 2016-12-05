@@ -229,7 +229,7 @@ d3.csv("visitors.csv", function(error, data) {
                     d.values[0].park + 
                     "</strong></h2><br/>" + 
                     "Credit: NPS / Kristi Rugg" + 
-                    "<img src='https://www.nps.gov/common/uploads/photogallery/ner/park/acad/5ABAAE29-1DD8-B71B-0B65C077C4876E7F/5ABAAE29-1DD8-B71B-0B65C077C4876E7F-large.jpg' alt='Rocky Ocean Drive Coast' style='float:right;max-width:100%;max-height:100%;border:0;'>");
+                    "<img src='https://www.nps.gov/common/uploads/photogallery/ner/park/acad/5ABAAE29-1DD8-B71B-0B65C077C4876E7F/5ABAAE29-1DD8-B71B-0B65C077C4876E7F-large.jpg' alt='Rocky Ocean Drive Coast' style='float:right;max-width:90%;max-height:90%;border:0;'>");
         }
     };
     
