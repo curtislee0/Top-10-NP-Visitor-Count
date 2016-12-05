@@ -94,7 +94,7 @@ d3.csv("visitors.csv", function(error, data) {
                 })
             .on("mouseover", function(){
                 information(d);
-                showtip(d);
+                
                 })
             .on("mouseout", function(){
                 /*parkinfo.transition()
