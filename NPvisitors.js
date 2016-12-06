@@ -78,7 +78,7 @@ d3.json("parks.json", function(error, park) {
             .attr("d", priceline(d.values))
             .style("opacity", 0);
         
-        // Add the Legend
+        //Add the Legend
         svg.append("text")
             .attr("x", (legendSpace/2)+i*legendSpace)  // space legend
             .attr("y", height + (margin.bottom/2)+ 15)
@@ -99,7 +99,7 @@ d3.json("parks.json", function(error, park) {
                 })
             .on("mouseover", function(){
                 information(d);
-                
+                fillpark(d.key);
                 })
             .on("mouseout", function(){
                 /*parkinfo.transition()
@@ -174,6 +174,9 @@ d3.json("parks.json", function(error, park) {
             .enter()
             .append("path")
             .attr("d", path)
+            .attr("id", function(d) {
+                return d.properties.UNIT_CODE;
+            })
             .on("mouseover", function(d) {
                 
                 var matrix = this.getScreen
@@ -199,9 +202,13 @@ d3.json("parks.json", function(error, park) {
                 return color(d.properties.UNIT_CODE);
             });
         
+            function fillpark(code) {
+                svg.select("#" + code)
+                    .style("fill", "goldenrod"); 
+            };
+        
         });
-        
-        
+         
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //  Helper Functions
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
