@@ -213,43 +213,43 @@ d3.json("parks.json", function(error, park) {
         switch(d.key){
             case "ACAD":
                 xcord = 853;
-                ycord = 236;
+                ycord = 249;
                 break;
             case "GLAC":
-                xcord = 309;
+                xcord = 315;
                 ycord = 187;
                 break;
             case "GRCA":
                 xcord = 293;
-                ycord = 415;
+                ycord = 424;
                 break;
             case "GRTE":
-                xcord = 328;
-                ycord = 281;
+                xcord = 333;
+                ycord = 293;
                 break;
             case "GRSM":
                 xcord = 692;
-                ycord = 425;
+                ycord = 442;
                 break;
             case "OLYM":
                 xcord = 196;
-                ycord = 178;
+                ycord = 192;
                 break;
             case "ROMO":
                 xcord = 386;
-                ycord = 348;
+                ycord = 364;
                 break;
             case "YELL":
-                xcord = 342;
-                ycord = 265;
+                xcord = 345;
+                ycord = 260;
                 break;
             case "YOSE":
-                xcord = 195;
-                ycord = 357;
+                xcord = 198;
+                ycord = 346;
                 break;
             case "ZION":
-                xcord = 279;
-                ycord = 388;
+                xcord = 284;
+                ycord = 378;
                 break;
             default:
                 break;
