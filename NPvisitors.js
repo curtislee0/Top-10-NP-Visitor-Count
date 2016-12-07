@@ -85,7 +85,9 @@ d3.json("parks.json", function(error, park) {
         
         //Add the Legend
         svg.append("text")
-            .attr("x", (legendSpace/2)+i*legendSpace)  // space legend
+            .attr("x", function() {
+                if(d.key == 'OLYM') return ((legendSpace/2)+i*legendSpace+58);
+                return ((legendSpace/2)+i*legendSpace);})  // space legend
             .attr("y", height + (margin.bottom/2)+ 15)
             .attr("class", "legend")    // style the legend
             .style("fill", function() { // Add the colours dynamically
@@ -109,7 +111,7 @@ d3.json("parks.json", function(error, park) {
                 hidetip(d);
                 hideinfo(d);
                 })
-            .text(d.values[0].park); 
+            .text(d.values[0].park);
     });
     
     // Add the X Axis
