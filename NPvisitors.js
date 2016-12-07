@@ -264,7 +264,7 @@ d3.json("parks.json", function(error, park) {
                     .style("opacity", .9);		
                 parktip.html(d.values[0].park)
                     .style("left", (xcord) + "px")		
-                    .style("top", (ycord) + "px")
+                    .style("top", (ycord - 28) + "px")
                     .style("background", function(){
                         return color(d.key);
                     })
