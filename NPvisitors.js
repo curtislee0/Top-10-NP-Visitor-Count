@@ -106,21 +106,10 @@ d3.json("parks.json", function(error, park) {
                 showtip(d);
                 })
             .on("mouseout", function(){
-                /*parkinfo.transition()
-                    .duration(500)
-                    .style("opacity",0);*/
                 hidetip(d);
-                parkinfo.transition()
-                    .duration(300)
-                    .style("opacity", 1);
-                parkinfo.html("<strong>" + d.values[0].park + "</strong><br/>" + "lots of infomation");
-                
-                })
-            .on("mouseout", function(){
-                
+                hideinfo(d);
                 })
             .text(d.values[0].park); 
-
     });
     
     // Add the X Axis
@@ -266,11 +255,17 @@ d3.json("parks.json", function(error, park) {
             });
     };
     
-    function hidetip(d){
+    function hidetip(d) {
         parktip.transition()		
-                .duration(500)		
-                .style("opacity", 0);
+            .duration(300)		
+            .style("opacity", 0);
     };
+    
+    function hideinfo(d) {
+        parkinfo.transition()
+            .duration(300)
+            .style("opacity", 0);
+    }
     
     //Display park info when hover
     function information(d){
