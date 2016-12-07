@@ -7,10 +7,12 @@ body{
 }
 
 .desc {
+    margin: 10px;
+    background-color: beige;
     font-family: "Times New Roman", Times, serif;
-    font-size: 20px;
-    width:600px;
-    height: 370px;
+    font-size: 25px;
+    width:770px;
+    height: 360px;
     display: inline-block;
 }
 
