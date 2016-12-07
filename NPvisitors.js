@@ -40,6 +40,12 @@ var parkinfo = d3.select("body").append("div")   //append div to body
     .attr("class", "info")
     .style("opacity", 0);
 
+var parktip = d3.select("body").append("div")	
+        .attr("class", "tooltip")				
+        .style("opacity", 0);
+
+var color = d3.scale.category10();   // set the colour scale
+
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //  Data Read Start
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -62,8 +68,6 @@ d3.json("parks.json", function(error, park) {
         .key(function(d) {return d.code;})
         //.key(function(d) {return d.park;})
         .entries(data);
-
-    var color = d3.scale.category10();   // set the colour scale
 
     legendSpace = width/dataNest.length; // spacing for the legend
 
@@ -99,7 +103,7 @@ d3.json("parks.json", function(error, park) {
                 })
             .on("mouseover", function(){
                 information(d);
-                fillpark(d.key);
+                showtip(d);
                 })
             .on("mouseout", function(){
                 /*parkinfo.transition()
@@ -140,10 +144,6 @@ d3.json("parks.json", function(error, park) {
     
     var path = d3.geo.path()
         .projection(projection);
-    
-    var parktip = d3.select("body").append("div")	
-        .attr("class", "tooltip")				
-        .style("opacity", 0);
             
         var neededparks = park.objects.npsboundary;
         var ourparks = park.objects.npsboundary.geometries;
@@ -178,9 +178,6 @@ d3.json("parks.json", function(error, park) {
                 return d.properties.UNIT_CODE;
             })
             .on("mouseover", function(d) {
-                
-                var matrix = this.getScreen
-                
                 parktip.transition()		
                     .duration(200)		
                     .style("opacity", .9);		
@@ -202,11 +199,6 @@ d3.json("parks.json", function(error, park) {
                 return color(d.properties.UNIT_CODE);
             });
         
-            function fillpark(code) {
-                svg.select("#" + code)
-                    .style("fill", "goldenrod"); 
-            };
-        
         });
          
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -215,14 +207,64 @@ d3.json("parks.json", function(error, park) {
     
     //Display park name when hover
     function showtip(d){
+        var xcord;
+        var ycord;
+        
+        switch(d.key){
+            case "ACAD":
+                xcord = 853;
+                ycord = 236;
+                break;
+            case "GLAC":
+                xcord = 309;
+                ycord = 187;
+                break;
+            case "GRCA":
+                xcord = 293;
+                ycord = 415;
+                break;
+            case "GRTE":
+                xcord = 328;
+                ycord = 281;
+                break;
+            case "GRSM":
+                xcord = 692;
+                ycord = 425;
+                break;
+            case "OLYM":
+                xcord = 196;
+                ycord = 178;
+                break;
+            case "ROMO":
+                xcord = 386;
+                ycord = 348;
+                break;
+            case "YELL":
+                xcord = 342;
+                ycord = 265;
+                break;
+            case "YOSE":
+                xcord = 195;
+                ycord = 257;
+                break;
+            case "ZION":
+                xcord = 279;
+                ycord = 388;
+                break;
+            default:
+                break;
+        }
+        
+        console.log(d);
+        
         svg.selectAll(".parkbound")
             .call(function() {
                 parktip.transition()		
                     .duration(200)		
                     .style("opacity", .9);		
                 parktip.html(d.values[0].park)
-                    .style("left", (d3.event.pageX) + "px")		
-                    .style("top", (d3.event.pageY - 28) + "px")
+                    .style("left", (xcord) + "px")		
+                    .style("top", (ycord) + "px")
                     .style("background", function(){
                         return color(d.key);
                     })
