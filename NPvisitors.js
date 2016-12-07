@@ -101,7 +101,7 @@ d3.json("parks.json", function(error, park) {
                 })
             .on("mouseout", function(){
                 hidetip(d);
-                hideinfo(d);
+                //hideinfo(d);
                 })
             .text(d.values[0].park);
     });
