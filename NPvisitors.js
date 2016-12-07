@@ -186,6 +186,9 @@ d3.json("parks.json", function(error, park) {
             })
             .style("fill", function(d) {
                 return color(d.properties.UNIT_CODE);
+            })
+            .style("stroke", function(d) {
+                return color(d.properties.UNIT_CODE);
             });
         });
          
