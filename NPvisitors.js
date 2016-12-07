@@ -71,8 +71,6 @@ d3.json("parks.json", function(error, park) {
 
     legendSpace = width/dataNest.length; // spacing for the legend
     
-    console.log(dataNest);
-    
     // Loop through each symbol / key
     dataNest.forEach(function(d,i) { 
         
