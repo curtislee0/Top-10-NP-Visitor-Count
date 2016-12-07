@@ -67,7 +67,6 @@ d3.json("parks.json", function(error, park) {
     // Nest the entries by symbol
     var dataNest = d3.nest()
         .key(function(d) {return d.code;})
-        //.key(function(d) {return d.park;})
         .entries(data);
 
     legendSpace = width/dataNest.length; // spacing for the legend
@@ -274,108 +273,86 @@ d3.json("parks.json", function(error, park) {
     
     //Display park info when hover
     function information(d){
+        var information;
+        
         switch(d.key){
             case "ACAD":
-                parkinfo.transition()
-                    .duration(300)
-                    .style("opacity",1);
-                parkinfo.html(
+                information =
                         "<h2 style='text-align:center'><strong>" + d.values[0].park + "</strong></h2><br/>" + 
                         "<div class='credit'><i>Credit: NPS / Kristi Rugg</i></div>" + 
                         "<div class='desc'>Acadia National Park is a 47,000-acre Atlantic coast recreation area primarily on Maine's Mount Desert Island. Its landscape is marked by woodland, rocky beaches and glacier-scoured granite peaks such as Cadillac Mountain, the highest point on the United States’ East Coast. Among the wildlife are moose, bear, whales and seabirds. The bayside town of Bar Harbor, with restaurants and shops, is a popular gateway.</div>" + 
-                        "<img src='https://www.nps.gov/common/uploads/photogallery/ner/park/acad/5ABAAE29-1DD8-B71B-0B65C077C4876E7F/5ABAAE29-1DD8-B71B-0B65C077C4876E7F-large.jpg' alt='Rocky Ocean Drive Coast' style='float:right;max-width:88%;max-height:88%;border:0;'>");
+                        "<img src='https://www.nps.gov/common/uploads/photogallery/ner/park/acad/5ABAAE29-1DD8-B71B-0B65C077C4876E7F/5ABAAE29-1DD8-B71B-0B65C077C4876E7F-large.jpg' alt='Rocky Ocean Drive Coast' style='float:right;max-width:88%;max-height:88%;border:0;'>";
                 break;
             case "GLAC":
-                parkinfo.transition()
-                    .duration(300)
-                    .style("opacity",1);
-                parkinfo.html(
+                information =
                     "<h2 style='text-align:center'><strong>" + d.values[0].park + "</strong></h2><br/>" + 
                     "<div class='credit'><i>Credit: NPS</i></div>" + 
                     "<div class='desc'>Glacier National Park is a 1,583-sq.-mi. wilderness area in Montana's Rocky Mountains, with glacier-carved peaks and valleys running to the Canadian border. It's crossed by the mountainous Going-to-the-Sun Road. Among more than 700 miles of hiking trails, it has a route to photogenic Hidden Lake. Other activities include backpacking, cycling and camping. Diverse wildlife ranges from mountain goats to grizzly bears.</div>" + 
-                    "<img src='https://www.nps.gov/common/uploads/photogallery/imr/park/glac/F27CED7C-155D-451F-67A8213F347FBE5E/F27CED7C-155D-451F-67A8213F347FBE5E-large.jpg' alt='Glenns Lake' style='float:right;max-width:88%;max-height:88%;border:0;'>");
+                    "<img src='https://www.nps.gov/common/uploads/photogallery/imr/park/glac/F27CED7C-155D-451F-67A8213F347FBE5E/F27CED7C-155D-451F-67A8213F347FBE5E-large.jpg' alt='Glenns Lake' style='float:right;max-width:88%;max-height:88%;border:0;'>";
                 break;
             case "GRCA":
-                parkinfo.transition()
-                    .duration(300)
-                    .style("opacity",1);
-                parkinfo.html(
+                information =
                     "<h2 style='text-align:center'><strong>" + d.values[0].park + "</strong></h2><br/>" + 
                     "<div class='credit'><i>Credit: NPS</i></div>" + 
                     "<div class='desc'>Grand Canyon National Park, in Arizona, is home to much of the immense Grand Canyon, with its layered bands of red rock revealing millions of years of geological history. Viewpoints include Mather Point, Yavapai Observation Station and architect Mary Colter’s Lookout Studio and her Desert View Watchtower. Lipan Point, with wide views of the canyon and Colorado River, is a popular, especially at sunrise and sunset.</div>" + 
-                    "<img src='https://www.nps.gov/common/uploads/photogallery/imr/park/grca/F7A4FC28-155D-451F-6754A8A6935BE816/F7A4FC28-155D-451F-6754A8A6935BE816-large.jpg' alt='Mather Point Rainbow' style='float:right;max-width:88%;max-height:88%;border:0;'>");
+                    "<img src='https://www.nps.gov/common/uploads/photogallery/imr/park/grca/F7A4FC28-155D-451F-6754A8A6935BE816/F7A4FC28-155D-451F-6754A8A6935BE816-large.jpg' alt='Mather Point Rainbow' style='float:right;max-width:88%;max-height:88%;border:0;'>";
                 break;
             case "GRTE":
-                parkinfo.transition()
-                    .duration(300)
-                    .style("opacity",1);
-                parkinfo.html(
+                information =
                     "<h2 style='text-align:center'><strong>" + d.values[0].park + "</strong></h2><br/>" + 
                     "<div class='credit'><i>Credit: NPS</i></div>" + 
                     "<div class='desc'>Grand Teton National Park is in the northwest of the U.S state of Wyoming. It encompasses the Teton mountain range, the 4,000-meter Grand Teton peak, and the valley known as Jackson Hole. It’s a popular destination in summer for mountaineering, hiking, backcountry camping and fishing, linked to nearby Yellowstone National Park by the John D. Rockefeller, Jr. Memorial Parkway.</div>" + 
-                    "<img src='https://www.nps.gov/common/uploads/photogallery/imr/park/grte/FC195559-155D-451F-67A79FAE8DF723B0/FC195559-155D-451F-67A79FAE8DF723B0-large.JPG' alt='String Lake' style='float:right;max-width:88%;max-height:88%;border:0;'>");
+                    "<img src='https://www.nps.gov/common/uploads/photogallery/imr/park/grte/FC195559-155D-451F-67A79FAE8DF723B0/FC195559-155D-451F-67A79FAE8DF723B0-large.JPG' alt='String Lake' style='float:right;max-width:88%;max-height:88%;border:0;'>";
                 break;
             case "GRSM":
-                parkinfo.transition()
-                    .duration(300)
-                    .style("opacity",1);
-                parkinfo.html(
+                information =
                     "<h2 style='text-align:center'><strong>" + d.values[0].park + "</strong></h2><br/>" + 
                     "<div class='credit'><i>Credit: NPS</i></div>" + 
                     "<div class='desc'>Great Smoky Mountains National Park straddles the border between North Carolina and Tennessee. The sprawling landscape encompasses lush forests and an abundance of wildflowers that bloom year-round. Streams, rivers and waterfalls appear along hiking routes that include a segment of the Appalachian Trail. An observation tower tops Clingmans Dome, the highest peak, offering scenic views of the mist-covered mountains.</div>" + 
-                    "<img src='https://www.nps.gov/common/uploads/photogallery/akr/park/grsm/2884C85B-1DD8-B71C-07641C4C43F3FDA7/2884C85B-1DD8-B71C-07641C4C43F3FDA7-large.jpg' alt='Cataloochee Creek' style='float:right;max-width:88%;max-height:88%;border:0;'>");
+                    "<img src='https://www.nps.gov/common/uploads/photogallery/akr/park/grsm/2884C85B-1DD8-B71C-07641C4C43F3FDA7/2884C85B-1DD8-B71C-07641C4C43F3FDA7-large.jpg' alt='Cataloochee Creek' style='float:right;max-width:88%;max-height:88%;border:0;'>";
                 break;
             case "OLYM":
-                parkinfo.transition()
-                    .duration(300)
-                    .style("opacity",1);
-                parkinfo.html(
+                information =
                     "<h2 style='text-align:center'><strong>" + d.values[0].park + "</strong></h2><br/>" + 
                     "<div class='credit'><i>Credit: NPS Photo</i></div>" + 
                     "<div class='desc'>Olympic National Park is on Washington's Olympic Peninsula in the Pacific Northwest. The park sprawls across several different ecosystems, from the dramatic peaks of the Olympic Mountains to old-growth forests. The summit of glacier-clad Mt. Olympus is popular with climbers, and numerous hiking and backpacking trails cut through the park's rainforests and along its Pacific coastline.</div>" + 
-                    "<img src='https://www.nps.gov/common/uploads/photogallery/20151215/park/olym/86070B68-1DD8-B71B-0B10F1FCC85DF7F8/86070B68-1DD8-B71B-0B10F1FCC85DF7F8-large.jpg' alt='Mountain Wildflowers' style='float:right;max-width:88%;max-height:88%;border:0;'>");
+                    "<img src='https://www.nps.gov/common/uploads/photogallery/20151215/park/olym/86070B68-1DD8-B71B-0B10F1FCC85DF7F8/86070B68-1DD8-B71B-0B10F1FCC85DF7F8-large.jpg' alt='Mountain Wildflowers' style='float:right;max-width:88%;max-height:88%;border:0;'>";
                 break;
             case "ROMO":
-                parkinfo.transition()
-                    .duration(300)
-                    .style("opacity",1);
-                parkinfo.html(
+                information =
                     "<h2 style='text-align:center'><strong>" + d.values[0].park + "</strong></h2><br/>" + 
                     "<div class='credit'><i>Credit: NPS Photo</i></div>" + 
                     "<div class='desc'>Rocky Mountain National Park in northern Colorado spans the Continental Divide and encompasses protected mountains, forests and alpine tundra. It's known for the Trail Ridge Road and the Old Fall River Road, drives that pass aspen trees and rivers. The Keyhole Route, a climb crossing vertical rock faces, leads up Longs Peak, the park’s tallest mountain. A trail surrounding Bear Lake offers views of the peaks.</div>" + 
-                    "<img src='https://www.nps.gov/common/uploads/photogallery/20140131/park/romo/271155A1-155D-451F-67485D6D107B39BF/271155A1-155D-451F-67485D6D107B39BF-large.jpg' alt='Lily Lake' style='float:right;max-width:88%;max-height:88%;border:0;'>");
+                    "<img src='https://www.nps.gov/common/uploads/photogallery/20140131/park/romo/271155A1-155D-451F-67485D6D107B39BF/271155A1-155D-451F-67485D6D107B39BF-large.jpg' alt='Lily Lake' style='float:right;max-width:88%;max-height:88%;border:0;'>";
                 break;
             case "YELL":
-                parkinfo.transition()
-                    .duration(300)
-                    .style("opacity",1);
-                parkinfo.html(
+                information =
                     "<h2 style='text-align:center'><strong>" + d.values[0].park + "</strong></h2><br/>" + 
                     "<div class='credit'><i>Credit: NPS Photo/Curtis Akin</i></div>" + 
                     "<div class='desc'>Yellowstone National Park is a nearly 3,500-sq.-mile wilderness recreation area atop a volcanic hot spot. Mostly in Wyoming, the park spreads into parts of Montana and Idaho too. Yellowstone features dramatic canyons, alpine rivers, lush forests, hot springs and gushing geysers, including its most famous, Old Faithful. It's also home to hundreds of animal species, including bears, wolves, bison, elk and antelope.</div>" + 
-                    "<img src='https://www.nps.gov/common/uploads/photogallery/20160215/park/yell/01680965-1DD8-B71B-0BAC451A696CFC83/01680965-1DD8-B71B-0BAC451A696CFC83-large.jpg' alt='Grand Prismatic Spring' style='float:right;max-width:88%;max-height:88%;border:0;'>");
+                    "<img src='https://www.nps.gov/common/uploads/photogallery/20160215/park/yell/01680965-1DD8-B71B-0BAC451A696CFC83/01680965-1DD8-B71B-0BAC451A696CFC83-large.jpg' alt='Grand Prismatic Spring' style='float:right;max-width:88%;max-height:88%;border:0;'>";
                 break;
             case "YOSE":
-                parkinfo.transition()
-                    .duration(300)
-                    .style("opacity",1);
-                parkinfo.html(
+                information =
                     "<h2 style='text-align:center'><strong>" + d.values[0].park + "</strong></h2><br/>" + 
                     "<div class='credit'><i>Credit: <a href='http://www.pachd.com/'>www.pachd.com</a></i></div>" + 
                     "<div class='desc'>Yosemite National Park is in California’s Sierra Nevada mountains. It’s famed for its giant, ancient sequoia trees, and for Tunnel View, the iconic vista of towering Bridalveil Fall and the granite cliffs of El Capitan and Half Dome. In Yosemite Village are shops, restaurants, lodging, the Yosemite Museum and the Ansel Adams Gallery, with prints of the photographer’s renowned black-and-white landscapes of the area.</div>" + 
-                    "<img src='http://www.pachd.com/free-images/yosemite/yosemite-03.jpg' alt='Half Dome' style='float:right;max-width:88%;max-height:88%;border:0;'>");
+                    "<img src='http://www.pachd.com/free-images/yosemite/yosemite-03.jpg' alt='Half Dome' style='float:right;max-width:88%;max-height:88%;border:0;'>";
                 break;
             case "ZION":
-                parkinfo.transition()
-                    .duration(300)
-                    .style("opacity",1);
-                parkinfo.html(
+                information =
                     "<h2 style='text-align:center'><strong>" + d.values[0].park + "</strong></h2><br/>" + 
                     "<div class='credit'><i>Credit: NPS Photo</i></div>" + 
                     "<div class='desc'>Zion National Park is a southwest Utah nature preserve distinguished by Zion Canyon’s steep red cliffs. Zion Canyon Scenic Drive cuts through its main section, leading to forest trails along the Virgin River. The river flows to the Emerald Pools, which have waterfalls and a hanging garden. Also along the river, partly through deep chasms, is Zion Narrows wading hike.</div>" + 
-                    "<img src='https://www.nps.gov/common/uploads/photogallery/imr/park/zion/9CAAA9F0-1DD8-B71B-0B40CA1A8612FFB9/9CAAA9F0-1DD8-B71B-0B40CA1A8612FFB9-large.jpg' alt='South Entrance' style='float:right;max-width:88%;max-height:88%;border:0;'>");
+                    "<img src='https://www.nps.gov/common/uploads/photogallery/imr/park/zion/9CAAA9F0-1DD8-B71B-0B40CA1A8612FFB9/9CAAA9F0-1DD8-B71B-0B40CA1A8612FFB9-large.jpg' alt='South Entrance' style='float:right;max-width:88%;max-height:88%;border:0;'>";
                 break;
-            default:  
+            default:
+                break;
         }
+        
+        parkinfo.transition()
+            .duration(300)
+            .style("opacity", 1);
+        parkinfo.html(information);
     };
 });
