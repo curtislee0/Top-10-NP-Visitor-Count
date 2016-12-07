@@ -195,9 +195,20 @@ d3.json("parks.json", function(error, park) {
         svg.append("path")
             .attr("class", "line")
             .style("stroke", function() { // Add the colours dynamically
-                return d.color = color(d.key); })
+                return d.color = color(d.key);})
             .attr("id", "line" + d.key) // assign ID
             .attr("d", lines(d.values));
+        
+        var selectpath = d3.select("#line" + d.key);
+        var totalLength = selectpath.node().getTotalLength();
+        
+        svg.select("#line" + d.key)
+            .attr("stroke-dasharray", totalLength + " " + totalLength)
+            .attr("stroke-dashoffset", totalLength)
+            .transition()
+                .duration(750)         // sets transition time to 2 seconds
+                .ease("linear")         // makes the speed linear
+                .attr("stroke-dashoffset", 0);
     };
     
     //Hide line
