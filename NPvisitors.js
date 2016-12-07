@@ -245,7 +245,7 @@ d3.json("parks.json", function(error, park) {
                 break;
             case "YOSE":
                 xcord = 195;
-                ycord = 257;
+                ycord = 357;
                 break;
             case "ZION":
                 xcord = 279;
