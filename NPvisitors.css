@@ -1,5 +1,6 @@
 body{
     font: 12px sans-serif;
+    background-color: wheat;
 }
 
 .credit {
@@ -16,7 +17,8 @@ body{
 }
 
 #logistics {
-    background-color: lightgrey;
+    margin: 5px;
+    background-color: olivedrab;
 }
 
 table {

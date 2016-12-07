@@ -104,19 +104,32 @@ d3.json("parks.json", function(error, park) {
                 //hideinfo(d);
                 })
             .text(d.values[0].park);
-    });
+    });    
         
     // Add the X Axis
     svg.append("g")
         .attr("class", "x axis")
         .attr("transform", "translate(0," + height + ")")
-        .call(xAxis);
+        .call(xAxis)
+        .append("text")
+        .attr("x", 1404)
+        .attr("y", 28)
+        .style("text-anchor", "end")
+        .style("font-style", "italic")
+        .text("Year");
 
     // Add the Y Axis
     svg.append("g")
         .attr("class", "y axis")
         .attr("transform", "translate(995,0)")
-    .call(yAxis);    
+        .call(yAxis)
+        .append("text")
+        .attr("x", -10)
+        .attr("y", -5)
+        .attr("dy", ".71em")
+        .style("text-anchor", "end")
+        .style("font-style", "italic")
+        .text("Visitors");    
         
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //  Map Projection Start
