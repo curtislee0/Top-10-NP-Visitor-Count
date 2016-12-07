@@ -285,11 +285,10 @@ d3.json("parks.json", function(error, park) {
                     .duration(300)
                     .style("opacity",1);
                 parkinfo.html(
-                    "<h2 style='text-align:center'><strong>" + 
-                    d.values[0].park + 
-                    "</strong></h2><br/>" + 
-                    "<div style='position:relative;' align='right'><i>Credit: NPS / Kristi Rugg</i></div>" + 
-                    "<img src='https://www.nps.gov/common/uploads/photogallery/ner/park/acad/5ABAAE29-1DD8-B71B-0B65C077C4876E7F/5ABAAE29-1DD8-B71B-0B65C077C4876E7F-large.jpg' alt='Rocky Ocean Drive Coast' style='float:right;max-width:88%;max-height:88%;border:0;'>");
+                        "<h2 style='text-align:center'><strong>" + d.values[0].park + "</strong></h2><br/>" + 
+                        "<div class='credit'><i>Credit: NPS / Kristi Rugg</i></div>" + 
+                        "<div class='desc' style='position:relative;' float='left' align='left'>Acadia National Park is a 47,000-acre Atlantic coast recreation area primarily on Maine's Mount Desert Island. Its landscape is marked by woodland, rocky beaches and glacier-scoured granite peaks such as Cadillac Mountain, the highest point on the United States’ East Coast. Among the wildlife are moose, bear, whales and seabirds. The bayside town of Bar Harbor, with restaurants and shops, is a popular gateway.</div>" + 
+                        "<img src='https://www.nps.gov/common/uploads/photogallery/ner/park/acad/5ABAAE29-1DD8-B71B-0B65C077C4876E7F/5ABAAE29-1DD8-B71B-0B65C077C4876E7F-large.jpg' alt='Rocky Ocean Drive Coast' style='float:right;max-width:88%;max-height:88%;border:0;'>");
                 break;
             case "GLAC":
                 parkinfo.transition()
@@ -310,7 +309,7 @@ d3.json("parks.json", function(error, park) {
                     "<h2 style='text-align:center'><strong>" + 
                     d.values[0].park + 
                     "</strong></h2><br/>" + 
-                    "<div style='position:relative;' align='right'><i>Credit: NPS</i></div>" + 
+                    "<div style='position:relative;' align='righ q  t'><i>Credit: NPS</i></div>" + 
                     "<img src='https://www.nps.gov/common/uploads/photogallery/imr/park/grca/F7A4FC28-155D-451F-6754A8A6935BE816/F7A4FC28-155D-451F-6754A8A6935BE816-large.jpg' alt='Mather Point Rainbow' style='float:right;max-width:88%;max-height:88%;border:0;'>");
                 break;
             case "GRTE":
