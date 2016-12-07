@@ -23,7 +23,7 @@ var yAxis = d3.svg.axis().scale(y)
 var milformat = d3.format(".2s");
 
 // Define the line
-var priceline = d3.svg.line()	
+var lines = d3.svg.line()	
     .x(function(d) { return x(d.date); })
     .y(function(d) { return y(d.visitors); });
     
@@ -70,17 +70,11 @@ d3.json("parks.json", function(error, park) {
         .entries(data);
 
     legendSpace = width/dataNest.length; // spacing for the legend
-
+    
+    console.log(dataNest);
+    
     // Loop through each symbol / key
     dataNest.forEach(function(d,i) { 
-        
-        svg.append("path")
-            .attr("class", "line")
-            .style("stroke", function() { // Add the colours dynamically
-                return d.color = color(d.key); })
-            .attr("id", 'tag'+d.key.replace(/\s+/g, '')) // assign ID
-            .attr("d", priceline(d.values))
-            .style("opacity", 0);
         
         //Add the Legend
         svg.append("text")
@@ -93,12 +87,13 @@ d3.json("parks.json", function(error, park) {
                 return d.color = color(d.key); })
             .on("click", function(){
                 // Determine if current line is visible
-                var active   = d.active ? false : true,
-                newOpacity = active ? 1 : 0; 
+                var active   = d.active ? false : true;
                 // Hide or show the elements based on the ID
-                d3.select("#tag"+d.key.replace(/\s+/g, ''))
-                    .transition().duration(100) 
-                    .style("opacity", newOpacity); 
+                if(active){
+                    drawline(d);
+                }else{
+                    hideline(d);
+                }
                 // Update whether or not the elements are active
                 d.active = active;
                 })
@@ -112,7 +107,7 @@ d3.json("parks.json", function(error, park) {
                 })
             .text(d.values[0].park);
     });
-    
+        
     // Add the X Axis
     svg.append("g")
         .attr("class", "x axis")
@@ -194,6 +189,21 @@ d3.json("parks.json", function(error, park) {
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //  Helper Functions
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    
+    //Draw line
+    function drawline(d){
+        svg.append("path")
+            .attr("class", "line")
+            .style("stroke", function() { // Add the colours dynamically
+                return d.color = color(d.key); })
+            .attr("id", "line" + d.key) // assign ID
+            .attr("d", lines(d.values));
+    };
+    
+    //Hide line
+    function hideline(d){
+        svg.select("#line" + d.key).remove();
+    }
     
     //Display park name when hover
     function showtip(d){
